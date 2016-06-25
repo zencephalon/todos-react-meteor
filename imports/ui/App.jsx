@@ -18,7 +18,7 @@ class App extends Component {
     };
   }
 
-  toggleHideCompleted() {
+  toggleHideCompleted = () => {
     this.setState({
       hideCompleted: !this.state.hideCompleted,
     });
@@ -57,7 +57,8 @@ class App extends Component {
               type="checkbox"
               readOnly
               checked={this.state.hideCompleted}
-              onClick={this.toggleHideCompleted.bind(this)}/>
+              onClick={this.toggleHideCompleted}
+            />
             Hide Completed Tasks
           </label>
 
