@@ -41,9 +41,19 @@ class App extends Component {
     if (this.state.hideCompleted) {
       filteredTasks = filteredTasks.filter(task => !task.checked);
     }
-    return filteredTasks.map((task) => (
-      <Task key={task._id} task={task} />
-    ))
+    return filteredTasks.map((task) => {
+      const { currentUser } = this.props
+      const currentUserId = currentUser && currentUser._id
+      const showPrivateButton = task.owner === currentUserId
+
+      return (
+        <Task
+          key={task._id}
+          task={task}
+          showPrivateButton={showPrivateButton}
+        />
+      )
+    })
   }
 
   render() {
